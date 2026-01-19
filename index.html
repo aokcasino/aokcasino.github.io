@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,9 +17,12 @@
       --accent2:#a78bfa;
       --link:#60a5fa;
       --max: 1100px;
+      --ok:#34d399;
+      --warn:#fbbf24;
     }
 
     *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
@@ -62,6 +65,7 @@
       color:#0b0f17;
       font-weight:900;
     }
+
     nav{
       display:flex;
       flex-wrap:wrap;
@@ -71,16 +75,65 @@
     nav a{
       color: var(--muted);
       text-decoration:none;
-      font-weight:700;
+      font-weight:800;
       font-size: 13px;
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid transparent;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
     }
     nav a:hover{
       color:#fff;
       border-color: rgba(31,41,55,.9);
       background: rgba(17,24,39,.6);
+    }
+    nav a.active{
+      color:#0b0f17;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      border-color: transparent;
+    }
+
+    /* Trust banner */
+    .trustbar{
+      border-bottom: 1px solid rgba(31,41,55,.7);
+      background: linear-gradient(135deg, rgba(167,139,250,.10), rgba(34,197,94,.08));
+    }
+    .trustbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 16px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+      justify-content:space-between;
+    }
+    .trust-left{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      color:#d1d5db;
+      font-weight:800;
+      font-size: 13px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(31,41,55,.9);
+      background: rgba(11,15,23,.55);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      white-space:nowrap;
+    }
+    .chip strong{ color:#fff; }
+    .chip .dot{
+      width:8px;height:8px;border-radius:99px;background:var(--ok);
+      box-shadow: 0 0 0 4px rgba(52,211,153,.10);
     }
 
     /* Layout */
@@ -104,20 +157,16 @@
       margin:0;
       color: var(--muted);
       line-height: 1.5;
+      max-width: 860px;
     }
 
     .section{
       padding: 22px 0;
-      scroll-margin-top: 80px; /* pour que l'ancre ne passe pas sous la barre sticky */
+      scroll-margin-top: 110px;
     }
 
-    /* Center promo card area */
-    .promo-center{
-      display:flex;
-      justify-content:center;
-    }
-
-    /* On encapsule ton HTML email dans un cadre “site” */
+    /* Promo frame */
+    .promo-center{ display:flex; justify-content:center; }
     .promo-frame{
       width: 100%;
       max-width: 720px;
@@ -128,7 +177,7 @@
       background: var(--card);
     }
 
-    /* Petites sections simples */
+    /* Cards / grid */
     .grid{
       display:grid;
       gap:12px;
@@ -152,6 +201,172 @@
       line-height: 1.45;
     }
 
+    /* Trust panel */
+    .trust-panel{
+      border-radius: 18px;
+      border: 1px solid rgba(31,41,55,.9);
+      background: linear-gradient(135deg, rgba(17,24,39,.75), rgba(15,23,42,.75));
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+      padding: 16px;
+    }
+    .trust-panel h2{
+      margin:0 0 10px;
+      color:#fff;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .trust-panel p{
+      margin:0 0 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 920px;
+    }
+    .trust-list{
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    .trust-item{
+      border-radius: 16px;
+      border: 1px solid rgba(31,41,55,.9);
+      background: rgba(11,15,23,.45);
+      padding: 12px;
+    }
+    .trust-item .title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#fff;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .icon{
+      width:28px;height:28px;border-radius:10px;
+      display:grid;place-items:center;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.30);
+      color: var(--ok);
+      font-weight: 900;
+    }
+    .trust-item .desc{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      margin:0;
+    }
+
+    /* CTA buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-weight: 900;
+      text-decoration: none;
+      border: 1px solid rgba(31,41,55,.9);
+      background: rgba(17,24,39,.6);
+      color: #fff;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      background: rgba(17,24,39,.85);
+    }
+    .btn-discord{
+      border: none;
+      background: linear-gradient(135deg, #5865F2, #8b5cf6);
+      color:#0b0f17;
+    }
+    .btn-discord:hover{
+      background: linear-gradient(135deg, #7c83ff, #a78bfa);
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(31,41,55,.9);
+      background: rgba(11,15,23,.55);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      white-space:nowrap;
+    }
+
+    /* Testimonials */
+    .testimonials-title{
+      margin:0 0 10px;
+      color:#fff;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .testimonials-sub{
+      margin:0 0 16px;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 900px;
+    }
+    .test-grid{
+      display:grid;
+      gap:12px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    .quote{
+      position:relative;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(31,41,55,.9);
+      background: linear-gradient(135deg, rgba(17,24,39,.85), rgba(15,23,42,.85));
+      box-shadow: 0 10px 35px rgba(0,0,0,.25);
+    }
+    .quote::before{
+      content:"“";
+      position:absolute;
+      top:-8px;
+      left:12px;
+      font-size: 48px;
+      color: rgba(167,139,250,.6);
+      font-weight: 900;
+      line-height: 1;
+    }
+    .quote p{
+      margin: 8px 0 12px;
+      color:#e5e7eb;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+    .quote .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top: 6px;
+    }
+    .quote .name{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#c7d2fe;
+      font-weight: 900;
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .stars{
+      display:inline-flex;
+      gap:3px;
+      font-size: 12px;
+      color: var(--warn);
+      user-select:none;
+      letter-spacing: .5px;
+      white-space:nowrap;
+    }
+
     .footer{
       margin-top: 30px;
       padding-top: 18px;
@@ -163,47 +378,58 @@
 
     @media (max-width: 900px){
       .grid{ grid-template-columns: 1fr; }
+      .trust-list{ grid-template-columns: 1fr; }
+      .test-grid{ grid-template-columns: 1fr; }
       .topbar-inner{ align-items:flex-start; }
+      .trustbar-inner{ justify-content:flex-start; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Barre d’onglets -->
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#accueil">
+      <a class="brand" href="#home">
         <span class="brand-badge">A</span>
         AokCasino
       </a>
 
       <nav>
-        <a href="#accueil">Accueil</a>
+        <a href="#home">Home</a>
         <a href="#promo">Promo</a>
-        <a href="#bonus">Bonus</a>
-        <a href="#discord">Discord</a>
+        <a href="#trust">Trust</a>
+        <a href="#how">How it works</a>
         <a href="#contact">Contact</a>
+        <a href="#reviews">Reviews</a>
       </nav>
     </div>
   </header>
 
+  <!-- TRUST BANNER -->
+  <div class="trustbar">
+    <div class="trustbar-inner">
+      <div class="trust-left">
+        <span class="chip"><span class="dot"></span><strong>Trusted</strong> community</span>
+        <span class="chip"><span class="dot"></span><strong>Secure</strong> experience</span>
+        <span class="chip"><span class="dot"></span><strong>Support</strong> via Discord</span>
+      </div>
+      <div class="chip">Limited-time offer · New users only</div>
+    </div>
+  </div>
+
   <main class="wrap">
-    <!-- Accueil -->
-    <section id="accueil" class="section hero">
-      <h1>Offre du moment & liens utiles</h1>
+    <section id="home" class="section hero">
+      <h1>Exclusive offer & trusted community</h1>
       <p>
-        Ici tu peux mettre ton texte d’intro. Les onglets en haut te ramènent aux sections.
+        Discover the current promotion and our official community links. We focus on a safe, smooth experience and fast support.
       </p>
     </section>
 
-    <!-- PROMO (centrée) -->
     <section id="promo" class="section">
-
       <div class="promo-center">
         <div class="promo-frame">
 
-          <!-- ====== TON HTML PROMO (adapté web) ====== -->
-          <!-- J’ai gardé ta structure emailing, mais c’est "wrapé" dans promo-frame -->
+          <!-- ====== PROMO HTML (Discord removed from this block) ====== -->
           <div style="margin:0; padding:0; background:#0b0f17;">
             <div style="display:none; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
               €10 FREE instantly + Deposit x2 + 75 Free Spins — limited offer for new users.
@@ -298,7 +524,7 @@
                         </table>
 
                         <div style="color:#fca5a5; font-size:13px; line-height:19px; margin-top:14px;">
-                          ⚠️ Valid for <b>new users only</b> · ⏳ Limited-time availability
+                          ⚠️ New users only · ⏳ Limited-time availability
                         </div>
                       </td>
                     </tr>
@@ -313,33 +539,13 @@
                     </tr>
 
                     <tr>
-                      <td style="padding:18px 28px 8px 28px; background:#0f172a;">
+                      <td style="padding:18px 28px 22px 28px; background:#0f172a;">
                         <div style="color:#ffffff; font-size:14px; line-height:20px;">
                           🍀 Good luck<br>🔥 And most of all… have fun
                         </div>
                         <div style="color:#e5e7eb; font-size:14px; margin-top:10px; font-weight:800;">
                           AokCasino 🎮
                         </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td style="padding:0 28px 22px 28px; background:#0f172a;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
-                               style="background:#111827; border:1px solid #1f2937; border-radius:14px;">
-                          <tr>
-                            <td style="padding:14px 16px;">
-                              <div style="color:#ffffff; font-size:14px; font-weight:800;">
-                                💬 Join the Discord community
-                              </div>
-                              <div style="margin-top:6px;">
-                                <a href="https://discord.gg/UgPkKA6dJK" style="color:#60a5fa; text-decoration:underline; font-size:13px;">
-                                  https://discord.gg/UgPkKA6dJK
-                                </a>
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
                       </td>
                     </tr>
 
@@ -355,59 +561,152 @@
               </tr>
             </table>
           </div>
-          <!-- ====== FIN PROMO ====== -->
+          <!-- ====== END PROMO ====== -->
 
         </div>
       </div>
     </section>
 
-    <!-- Bonus / Infos -->
-    <section id="bonus" class="section">
+    <!-- WHY TRUST US -->
+    <section id="trust" class="section">
+      <div class="trust-panel">
+        <h2>Why people trust us</h2>
+        <p>
+          We’re community-driven: clear links, fast support, and a smooth experience. Here’s what we focus on to keep things reliable.
+        </p>
+
+        <div class="trust-list">
+          <div class="trust-item">
+            <div class="title"><span class="icon">🛡️</span> Safety-first mindset</div>
+            <p class="desc">We share official links only, avoid misleading claims, and keep everything straightforward.</p>
+          </div>
+          <div class="trust-item">
+            <div class="title"><span class="icon">⚡</span> Fast community support</div>
+            <p class="desc">Questions or issues? Join Discord for quick answers, updates, and help.</p>
+          </div>
+          <div class="trust-item">
+            <div class="title"><span class="icon">✅</span> Transparency</div>
+            <p class="desc">We highlight what matters: “new users only”, limited-time notes, and quick access to terms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
       <div class="grid">
         <div class="box">
-          <h3>✅ Comment profiter</h3>
-          <p>Décris ici en 2-3 étapes simples (inscription, dépôt, etc.).</p>
+          <h3>✅ Step-by-step</h3>
+          <p>Register, claim the €10 free, then deposit to unlock the x2 bonus + 75 free spins.</p>
         </div>
         <div class="box">
-          <h3>📌 Conditions</h3>
-          <p>Ajoute un résumé des conditions (si tu veux), clair et court.</p>
+          <h3>📌 Notes</h3>
+          <p>Offer typically applies to new users. Always check the operator’s terms on the signup page.</p>
         </div>
         <div class="box">
-          <h3>🔗 Liens</h3>
-          <p>Ajoute Telegram / Twitch / autre. (Boutons ou liens.)</p>
+          <h3>🔗 Quick link</h3>
+          <p>
+            Open the offer:
+            <a href="https://dashboard.onetwoaffiliates.com/s/duJJN" style="color:var(--link); text-decoration:underline;">
+              dashboard.onetwoaffiliates.com/s/duJJN
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Discord -->
-    <section id="discord" class="section">
-      <div class="box">
-        <h3>💬 Discord</h3>
-        <p>
-          Rejoins la commu :
-          <a href="https://discord.gg/UgPkKA6dJK" style="color:var(--link); text-decoration:underline;">
-            discord.gg/UgPkKA6dJK
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <!-- Contact -->
     <section id="contact" class="section">
       <div class="box">
-        <h3>📩 Contact</h3>
-        <p>Tu peux mettre un email, un Telegram, ou un simple texte.</p>
+        <h3>💬 Contact & community</h3>
+        <p style="margin-bottom:12px;">
+          For support, updates, and exclusive drops, join our official Discord:
+        </p>
+
+        <a class="btn btn-discord"
+           href="https://discord.gg/UgPkKA6dJK"
+           target="_blank"
+           rel="noopener">
+          🚀 Join Discord
+          <span class="pill">Official</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="section">
+      <h2 class="testimonials-title">What players say</h2>
+      <p class="testimonials-sub">
+        Feedback from players. We keep things smooth, transparent, and community-focused.
+      </p>
+
+      <div class="test-grid">
+        <div class="quote">
+          <div class="top">
+            <div class="name">Alex M.</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p>“Great casino experience! I managed to win a good amount of money, and everything feels very reliable.”</p>
+          <div class="pill">Trusted review</div>
+        </div>
+
+        <div class="quote">
+          <div class="top">
+            <div class="name">Daniel R.</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p>“Awesome casino. I had some really good wins, and the platform feels safe and trustworthy.”</p>
+          <div class="pill">Trusted review</div>
+        </div>
+
+        <div class="quote">
+          <div class="top">
+            <div class="name">Chris L.</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p>“Excellent casino overall! I made decent profits and the system looks very reliable.”</p>
+          <div class="pill">Trusted review</div>
+        </div>
       </div>
 
       <div class="footer">
-        © <span id="year"></span> AokCasino — Tous droits réservés.
+        © <span id="year"></span> AokCasino — All rights reserved.
       </div>
     </section>
   </main>
 
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Active menu highlighting based on scroll position
+    const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+    const sections = navLinks
+      .map(a => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible && visible.target && visible.target.id) {
+        setActive(visible.target.id);
+      }
+    }, { root: null, threshold: [0.2, 0.35, 0.5, 0.7] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    navLinks.forEach(a => {
+      a.addEventListener("click", () => {
+        const id = a.getAttribute("href").replace("#","");
+        setActive(id);
+      });
+    });
+
+    setActive("home");
   </script>
 </body>
 </html>
-
