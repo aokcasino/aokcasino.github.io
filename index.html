@@ -48,4 +48,385 @@
       cursor:pointer;
       text-decoration:none;
       display:inline-flex;
-      align-items
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+      font-size:13px;
+      transition:transform .12s ease, background .12s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,.07);transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#ff4fd8);border:0}
+    .btn.success{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35)}
+    .btn.discord{background:linear-gradient(135deg,#5865F2,#8b5cf6);border:0;color:#0b0f1a}
+    .btn.discord:hover{background:linear-gradient(135deg,#7c83ff,#a78bfa)}
+
+    /* Layout */
+    .wrap{max-width:var(--max);margin:0 auto;padding:22px 18px 70px}
+    .hero{padding:22px 0 6px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+    .h1{font-size:40px;line-height:1.05;margin:0 0 10px;font-weight:1000}
+    .sub{color:var(--muted);margin:0 0 16px;font-size:16px;line-height:1.5}
+    .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+    .pill{border:1px solid var(--border);padding:8px 10px;border-radius:999px;color:var(--muted);font-size:13px;background:rgba(255,255,255,.03);font-weight:900}
+    .panel{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius:18px;padding:16px;
+    }
+    .small{color:var(--muted);font-size:12px;line-height:1.45}
+    .section{margin:26px 0;scroll-margin-top:90px}
+
+    /* Offer cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+    .card{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height:240px;
+      box-shadow:0 12px 40px rgba(0,0,0,.25);
+    }
+    .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:900}
+    .tag b{color:var(--text)}
+    .title{font-size:18px;font-weight:1000;margin:0}
+    .desc{color:var(--muted);margin:0;font-size:14px;line-height:1.35}
+    .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+    .code{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      font-size:12px;
+      padding:10px;
+      border-radius:14px;
+      background:rgba(0,0,0,.25);
+      border:1px dashed rgba(255,255,255,.15);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+    }
+    .code span{opacity:.92}
+
+    /* Trust + How */
+    details{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      padding:12px
+    }
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:900}
+
+    .trust3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+    .trustbox{
+      border-radius:18px;border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(17,24,39,.65), rgba(15,23,42,.65));
+      padding:14px;
+    }
+    .trustbox .t{font-weight:1000;margin:0 0 6px}
+    .trustbox .d{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+    /* Reviews */
+    .test-grid{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:12px;margin-top:12px}
+    .quote{
+      position:relative;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(17,24,39,.80), rgba(15,23,42,.80));
+      box-shadow:0 10px 35px rgba(0,0,0,.22);
+    }
+    .quote::before{
+      content:"“";
+      position:absolute;
+      top:-8px;left:12px;
+      font-size:48px;
+      color:rgba(167,139,250,.6);
+      font-weight:1000;
+      line-height:1;
+    }
+    .quote p{margin:8px 0 12px;color:#e5e7eb;line-height:1.5;font-size:13px}
+    .quote .topr{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+    .quote .name{color:#c7d2fe;font-weight:1000;font-size:13px;white-space:nowrap}
+    .stars{display:inline-flex;gap:3px;font-size:12px;color:var(--warn);user-select:none;letter-spacing:.5px;white-space:nowrap}
+
+    /* Toast */
+    .toast{
+      position:fixed;right:16px;bottom:16px;
+      background:rgba(17,26,46,.95);
+      border:1px solid var(--border);
+      padding:10px 12px;border-radius:14px;
+      display:none;max-width:320px;
+      box-shadow:0 12px 40px rgba(0,0,0,.25);
+      z-index:100;
+    }
+    .toast.show{display:block}
+
+    .footer{
+      border-top:1px solid var(--border);
+      margin-top:24px;
+      padding:18px 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    @media (max-width:960px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero{grid-template-columns:1fr}
+      .trust3{grid-template-columns:1fr}
+      .test-grid{grid-template-columns:1fr}
+      .h1{font-size:34px}
+    }
+    @media (max-width:620px){
+      .grid{grid-template-columns:1fr}
+      .top{position:static}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="#home">
+        <span class="badge">A</span>
+        <span>AokCasino</span>
+      </a>
+      <nav class="nav">
+        <a class="btn" href="#offres">Offres</a>
+        <a class="btn" href="#trust">Trust</a>
+        <a class="btn" href="#how">How</a>
+        <a class="btn" href="#reviews">Reviews</a>
+        <a class="btn discord" id="btnDiscord" href="#" rel="nofollow noopener" target="_blank">Discord</a>
+        <a class="btn primary" id="btnOfferTop" href="#" rel="nofollow noopener" target="_blank">Claim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="home" class="hero">
+      <div>
+        <h1 class="h1">€10 FREE + x2 dépôt + 75 free spins 🔥</h1>
+        <p class="sub">
+          Offre exclusive AokCasino + communauté Discord officielle pour support & drops. Liens clairs, accès rapide, expérience fluide.
+        </p>
+        <div class="pillrow">
+          <div class="pill">✅ Liens officiels</div>
+          <div class="pill">✅ Support Discord</div>
+          <div class="pill">✅ Tracking UTM</div>
+          <div class="pill">✅ +18 / jeu responsable</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="small" style="margin-bottom:8px">⚡ Astuce</div>
+        <div style="font-weight:1000;font-size:16px;margin-bottom:6px">Copie ton lien (avec UTM si besoin)</div>
+        <div class="small">
+          Exemple : <span style="opacity:.92">?utm_source=twitch&utm_medium=bio&utm_campaign=aokcasino</span>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="#offres">Voir l’offre</a>
+          <button class="btn" id="copyPageLink">Copier le lien</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="offres" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Offre du moment</h2>
+      <div id="offersGrid" class="grid"></div>
+      <div class="small">Dernière mise à jour : <span id="updatedAt"></span></div>
+    </section>
+
+    <section id="trust" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Pourquoi les gens nous font confiance</h2>
+      <p class="small" style="margin:0;max-width:920px">
+        Communauté, transparence, et liens officiels. On met en avant ce qui compte : conditions, accès rapide et support.
+      </p>
+
+      <div class="trust3">
+        <div class="trustbox">
+          <p class="t">🛡️ Safety-first</p>
+          <p class="d">On partage des liens officiels uniquement, pas de promesses bidons, pas de flou.</p>
+        </div>
+        <div class="trustbox">
+          <p class="t">⚡ Support rapide</p>
+          <p class="d">Une question ? Discord pour réponses, updates et assistance.</p>
+        </div>
+        <div class="trustbox">
+          <p class="t">✅ Transparence</p>
+          <p class="d">“New users only”, durée limitée, et accès rapide aux conditions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">How it works</h2>
+      <details>
+        <summary>✅ Étapes (simple)</summary>
+        <div class="small" style="margin-top:8px">
+          1) Inscription via le lien officiel<br/>
+          2) Tu reçois <b>€10 FREE</b><br/>
+          3) Dépôt ensuite pour débloquer <b>x2</b> + <b>75 free spins</b><br/>
+          4) Tu joues 🎰
+        </div>
+      </details>
+      <details>
+        <summary>💡 Exemple concret</summary>
+        <div class="small" style="margin-top:8px">
+          Tu déposes <b>€10</b> → tu démarres avec <b>€20 + 75 free spins</b>.
+        </div>
+      </details>
+      <details>
+        <summary>📌 Notes</summary>
+        <div class="small" style="margin-top:8px">
+          Offre généralement réservée aux <b>nouveaux utilisateurs</b>. Vérifie toujours les conditions sur la page d’inscription de l’opérateur.
+        </div>
+      </details>
+    </section>
+
+    <section id="reviews" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Avis joueurs</h2>
+      <p class="small" style="margin:0;max-width:900px">
+        Retours de joueurs. On garde ça simple, transparent et orienté communauté.
+      </p>
+
+      <div class="test-grid">
+        <div class="quote">
+          <div class="topr">
+            <div class="name">Alex M.</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p>“Great casino experience! I managed to win a good amount of money, and everything feels very reliable.”</p>
+          <div class="pill">Trusted review</div>
+        </div>
+
+        <div class="quote">
+          <div class="topr">
+            <div class="name">Daniel R.</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p>“Awesome casino. I had some really good wins, and the platform feels safe and trustworthy.”</p>
+          <div class="pill">Trusted review</div>
+        </div>
+
+        <div class="quote">
+          <div class="topr">
+            <div class="name">Chris L.</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p>“Excellent casino overall! I made decent profits and the system looks very reliable.”</p>
+          <div class="pill">Trusted review</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div><b>18+</b> — Le jeu d’argent comporte des risques : endettement, isolement, dépendance. Fixe-toi des limites.</div>
+        <div style="margin-top:8px">© <span id="year"></span> AokCasino — All rights reserved.</div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ======= AOKCASINO CONFIG (repris de ton script) =======
+    const DISCORD_URL = "https://discord.gg/UgPkKA6dJK";
+    const OFFER_URL   = "https://dashboard.onetwoaffiliates.com/s/duJJN";
+
+    // Si tu as un code promo, mets-le ici (sinon laisse "")
+    const OFFER_CODE  = ""; // ex: "AOK10"
+
+    // Cartes offres (tu peux en ajouter)
+    const OFFERS = [
+      {
+        brand: "AokCasino",
+        headline: "€10 FREE + x2 dépôt + 75 free spins",
+        desc: "Pack de bienvenue : €10 offerts + dépôt doublé + 75 free spins. Offre limitée (nouveaux utilisateurs).",
+        code: OFFER_CODE,
+        ctaLabel: "Claim the Bonus",
+        url: OFFER_URL
+      }
+    ];
+
+    // ======= Helpers =======
+    const $ = (id) => document.getElementById(id);
+
+    const toast = (msg) => {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+    };
+
+    // UTM passthrough (conserve tes UTM sur tous les liens sortants)
+    const currentParams = new URLSearchParams(location.search);
+    const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+    const utm = new URLSearchParams();
+    utmKeys.forEach(k => { if (currentParams.get(k)) utm.set(k, currentParams.get(k)); });
+
+    const withUtm = (url) => {
+      try{
+        const u = new URL(url);
+        utm.forEach((v,k)=>u.searchParams.set(k,v));
+        return u.toString();
+      }catch(e){
+        return url;
+      }
+    };
+
+    const copy = async (text) => {
+      await navigator.clipboard.writeText(text);
+      toast("Copié ✅");
+    };
+
+    // ======= Render offers =======
+    const grid = $("offersGrid");
+    grid.innerHTML = OFFERS.map((o, idx) => {
+      const codeBlock = o.code
+        ? `<div class="code">
+             <span>${o.code}</span>
+             <button class="btn" data-copy="${o.code}">Copier</button>
+           </div>`
+        : `<div class="small">Code : <b>aucun</b></div>`;
+
+      return `
+        <article class="card">
+          <div class="tag">🎰 <b>${o.brand}</b></div>
+          <h3 class="title">${o.headline}</h3>
+          <p class="desc">${o.desc}</p>
+          ${codeBlock}
+          <div class="row">
+            <a class="btn primary" href="${withUtm(o.url)}" target="_blank" rel="nofollow noopener">
+              ${o.ctaLabel}
+            </a>
+            <button class="btn" data-share="${withUtm(o.url)}">Copier le lien</button>
+          </div>
+          <div class="small" style="margin-top:6px;color:rgba(239,68,68,.9)">
+            ⚠️ New users only · ⏳ Limited-time availability
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    // ======= Events =======
+    document.addEventListener("click", async (e) => {
+      const btnCopy = e.target.closest("[data-copy]");
+      if (btnCopy) return copy(btnCopy.getAttribute("data-copy"));
+
+      const btnShare = e.target.closest("[data-share]");
+      if (btnShare) return copy(btnShare.getAttribute("data-share"));
+    });
+
+    // Top buttons
+    $("btnDiscord").href = withUtm(DISCORD_URL);
+    $("btnOfferTop").href = withUtm(OFFER_URL);
+
+    $("copyPageLink").addEventListener("click", async () => copy(location.href));
+
+    // Footer meta
+    $("year").textContent = new Date().getFullYear();
+    $("updatedAt").textContent = new Date().toLocaleDateString("fr-FR", { year:"numeric", month:"long", day:"numeric" });
+  </script>
+</body>
+</html>
