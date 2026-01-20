@@ -1,15 +1,14 @@
-```html
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AokCasino — Bonus & Promo</title>
-  <meta name="description" content="AokCasino exclusive deal: €10 FREE + x2 deposit + 75 free spins. Official links + Discord community." />
+  <title>LinaStreamy — Offre & Analyses</title>
+  <meta name="description" content="LinaStreamy : offre promotionnelle (18+), explications et analyses des mécanismes psychologiques, signaux d’alerte et checklist." />
   <meta name="theme-color" content="#0b0f1a" />
   <style>
     :root{
-      --bg:#0b0f1a; --card:#111a2e; --muted:#8ea0c8; --text:#eaf0ff;
+      --bg:#0b0f1a; --muted:#8ea0c8; --text:#eaf0ff;
       --accent:#7c5cff; --accent2:#22c55e; --warn:#f59e0b; --danger:#ef4444;
       --border:rgba(255,255,255,.08);
       --max:1060px;
@@ -54,10 +53,10 @@
       font-weight:800;
       font-size:13px;
       transition:transform .12s ease, background .12s ease;
+      white-space:nowrap;
     }
     .btn:hover{background:rgba(255,255,255,.07);transform:translateY(-1px)}
     .btn.primary{background:linear-gradient(90deg,var(--accent),#ff4fd8);border:0}
-    .btn.success{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35)}
     .btn.discord{background:linear-gradient(135deg,#5865F2,#8b5cf6);border:0;color:#0b0f1a}
     .btn.discord:hover{background:linear-gradient(135deg,#7c83ff,#a78bfa)}
 
@@ -76,7 +75,7 @@
     .small{color:var(--muted);font-size:12px;line-height:1.45}
     .section{margin:26px 0;scroll-margin-top:90px}
 
-    /* Offer cards */
+    /* Cards */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
     .card{
       border:1px solid var(--border);
@@ -108,7 +107,7 @@
     }
     .code span{opacity:.92}
 
-    /* Trust + How */
+    /* Details */
     details{
       border:1px solid var(--border);
       border-radius:14px;
@@ -117,39 +116,6 @@
     }
     details+details{margin-top:10px}
     summary{cursor:pointer;font-weight:900}
-
-    .trust3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
-    .trustbox{
-      border-radius:18px;border:1px solid var(--border);
-      background:linear-gradient(135deg, rgba(17,24,39,.65), rgba(15,23,42,.65));
-      padding:14px;
-    }
-    .trustbox .t{font-weight:1000;margin:0 0 6px}
-    .trustbox .d{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
-
-    /* Reviews */
-    .test-grid{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:12px;margin-top:12px}
-    .quote{
-      position:relative;
-      padding:16px;
-      border-radius:18px;
-      border:1px solid var(--border);
-      background:linear-gradient(135deg, rgba(17,24,39,.80), rgba(15,23,42,.80));
-      box-shadow:0 10px 35px rgba(0,0,0,.22);
-    }
-    .quote::before{
-      content:"“";
-      position:absolute;
-      top:-8px;left:12px;
-      font-size:48px;
-      color:rgba(167,139,250,.6);
-      font-weight:1000;
-      line-height:1;
-    }
-    .quote p{margin:8px 0 12px;color:#e5e7eb;line-height:1.5;font-size:13px}
-    .quote .topr{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
-    .quote .name{color:#c7d2fe;font-weight:1000;font-size:13px;white-space:nowrap}
-    .stars{display:inline-flex;gap:3px;font-size:12px;color:var(--warn);user-select:none;letter-spacing:.5px;white-space:nowrap}
 
     /* Toast */
     .toast{
@@ -175,8 +141,6 @@
     @media (max-width:960px){
       .grid{grid-template-columns:repeat(2,1fr)}
       .hero{grid-template-columns:1fr}
-      .trust3{grid-template-columns:1fr}
-      .test-grid{grid-template-columns:1fr}
       .h1{font-size:34px}
     }
     @media (max-width:620px){
@@ -189,140 +153,235 @@
 <body>
   <header class="top">
     <div class="top-inner">
-      <a class="brand" href="#home">
-        <span class="badge">A</span>
-        <span>AokCasino</span>
+      <a class="brand" href="#home" aria-label="Retour Accueil">
+        <span class="badge">L</span>
+        <span>LinaStreamy</span>
       </a>
-      <nav class="nav">
-        <a class="btn" href="#offers">Offers</a>
-        <a class="btn" href="#trust">Trust</a>
-        <a class="btn" href="#how">How</a>
-        <a class="btn" href="#reviews">Reviews</a>
-        <a class="btn discord" id="btnDiscord" href="#" rel="nofollow noopener" target="_blank">Discord</a>
-        <a class="btn primary" id="btnOfferTop" href="#" rel="nofollow noopener" target="_blank">Claim</a>
+      <nav class="nav" aria-label="Navigation">
+        <a class="btn" href="#home">Accueil</a>
+        <a class="btn" href="#explication">Explication</a>
+        <a class="btn" href="#analyses">Analyses</a>
+        <a class="btn" href="#eviter">Ce qu’il faut éviter</a>
+        <a class="btn" href="#ressources">Ressources</a>
+        <a class="btn" href="#apropos">À propos</a>
+        <a class="btn discord" id="btnTikTok" href="#" rel="nofollow noopener" target="_blank">TikTok</a>
+        <a class="btn primary" href="#offers">Voir l’offre</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
+
+    <!-- ACCUEIL + OFFRE EN PREMIER -->
     <section id="home" class="hero">
       <div>
-        <h1 class="h1">€10 FREE + x2 deposit + 75 free spins 🔥</h1>
+        <h1 class="h1">Offre promotionnelle (18+) + analyses claires.</h1>
         <p class="sub">
-          AokCasino exclusive deal + official Discord community for support & drops. Clear links, fast access, smooth experience.
+          Ici tu retrouves une <b>offre promotionnelle</b> et, surtout, des contenus pour <b>prendre du recul</b> :
+          mécanismes psychologiques, signaux d’alerte, et checklist avant de cliquer n’importe où.
         </p>
         <div class="pillrow">
-          <div class="pill">✅ Official links</div>
-          <div class="pill">✅ Discord support</div>
+          <div class="pill">✅ Accès rapide</div>
           <div class="pill">✅ UTM tracking</div>
-          <div class="pill">✅ 18+ / responsible play</div>
+          <div class="pill">✅ Analyse & vigilance</div>
+          <div class="pill">✅ 18+ / responsabilité</div>
         </div>
       </div>
 
       <div class="panel">
-        <div class="small" style="margin-bottom:8px">⚡ Tip</div>
-        <div style="font-weight:1000;font-size:16px;margin-bottom:6px">Copy your page link (UTM-ready)</div>
+        <div class="small" style="margin-bottom:8px">⚡ Astuce</div>
+        <div style="font-weight:1000;font-size:16px;margin-bottom:6px">Copie le lien de cette page (UTM prêt)</div>
         <div class="small">
-          Example: <span style="opacity:.92">?utm_source=twitch&utm_medium=bio&utm_campaign=aokcasino</span>
+          Exemple : <span style="opacity:.92">?utm_source=tiktok&utm_medium=bio&utm_campaign=linastreamy</span>
         </div>
         <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="#offers">View the offer</a>
-          <button class="btn" id="copyPageLink">Copy page link</button>
+          <a class="btn primary" href="#offers">Accéder à l’offre</a>
+          <button class="btn" id="copyPageLink">Copier le lien</button>
         </div>
       </div>
     </section>
 
     <section id="offers" class="section">
-      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Current offer</h2>
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Offre promotionnelle</h2>
+      <p class="small" style="margin:0;max-width:920px">
+        Offre externe réservée à un public majeur. Lis toujours les conditions et fixe tes limites.
+      </p>
       <div id="offersGrid" class="grid"></div>
-      <div class="small">Last update: <span id="updatedAt"></span></div>
+      <div class="small">Dernière mise à jour : <span id="updatedAt"></span></div>
     </section>
 
-    <section id="trust" class="section">
-      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Why people trust us</h2>
+    <!-- EXPLICATION -->
+    <section id="explication" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Explication</h2>
       <p class="small" style="margin:0;max-width:920px">
-        Community-driven, transparent, official links only. We highlight what matters: conditions, quick access, and support.
+        Beaucoup de plateformes “d’argent en ligne” s’appuient sur des <b>mécanismes</b> :
+        récompense variable, biais du “presque”, et déclencheurs émotionnels.
+        Comprendre ça change la manière dont tu décides.
       </p>
 
-      <div class="trust3">
-        <div class="trustbox">
-          <p class="t">🛡️ Safety-first</p>
-          <p class="d">Official links only, no misleading promises, no confusion.</p>
+      <div style="margin-top:12px">
+        <details open>
+          <summary>🧠 Récompense intermittente</summary>
+          <div class="small" style="margin-top:8px">
+            Quand le résultat arrive de façon imprévisible, l’attention reste “accrochée” plus longtemps.
+          </div>
+        </details>
+        <details>
+          <summary>🎯 Biais du “presque réussi”</summary>
+          <div class="small" style="margin-top:8px">
+            Être “tout près” d’un résultat positif pousse souvent à recommencer, même sans avantage réel.
+          </div>
+        </details>
+        <details>
+          <summary>🔍 Question simple</summary>
+          <div class="small" style="margin-top:8px">
+            <b>Comment cette plateforme gagne de l’argent exactement ?</b> Si c’est flou, prudence.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ANALYSES (LONGUE : 8 CARDS) -->
+    <section id="analyses" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Analyses</h2>
+      <p class="small" style="margin:0;max-width:920px">
+        Voici une grille simple pour analyser une plateforme : <b>biais</b>, <b>signaux d’alerte</b>, <b>frictions</b>, et <b>checklist</b>.
+        L’objectif n’est pas de te dire quoi faire, mais de t’aider à décider lucidement.
+      </p>
+
+      <div class="grid" style="margin-top:12px">
+        <article class="card">
+          <div class="tag">🧠 <b>Biais</b></div>
+          <h3 class="title">Illusion de contrôle</h3>
+          <p class="desc">Quand on te laisse penser qu’un “truc” ou une “méthode” suffit, tu surestimes ton contrôle sur le résultat.</p>
+          <div class="row"><a class="btn" href="#eviter">Voir les erreurs</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">🎯 <b>Biais</b></div>
+          <h3 class="title">Le “presque”</h3>
+          <p class="desc">Plus tu es “proche” (visuellement ou émotionnellement), plus tu as envie de retenter, même si ça ne change rien.</p>
+          <div class="row"><a class="btn" href="#explication">Revenir au mécanisme</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">⏱️ <b>Signal</b></div>
+          <h3 class="title">Urgence permanente</h3>
+          <p class="desc">Si “c’est maintenant ou jamais” en permanence, c’est un levier classique pour court-circuiter la réflexion.</p>
+          <div class="row"><a class="btn" href="#eviter">Ce qu’il faut éviter</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">🧱 <b>Signal</b></div>
+          <h3 class="title">Frictions & opacité</h3>
+          <p class="desc">Trop d’étapes, trop de conditions, trop de zones floues : plus c’est opaque, plus tu dois ralentir.</p>
+          <div class="row"><a class="btn" href="#ressources">Aller aux ressources</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">🧾 <b>Signal</b></div>
+          <h3 class="title">Conditions incompréhensibles</h3>
+          <p class="desc">Si les règles sont longues mais jamais claires, ce n’est pas un accident : c’est souvent volontaire.</p>
+          <div class="row"><a class="btn" href="#ressources">Lire avant de cliquer</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">📌 <b>Signal</b></div>
+          <h3 class="title">Témoignages extrêmes</h3>
+          <p class="desc">Les “histoires incroyables” attirent l’attention, mais ne prouvent rien. Regarde la moyenne, pas l’exception.</p>
+          <div class="row"><a class="btn" href="#eviter">Erreur fréquente</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">✅ <b>Checklist</b></div>
+          <h3 class="title">Avant de cliquer</h3>
+          <p class="desc">Ai-je compris les règles ? Les limites ? Les délais ? Le support ? Si une réponse est “non”, je pause.</p>
+          <div class="row"><a class="btn" href="#eviter">Ralentir</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">🧰 <b>Checklist</b></div>
+          <h3 class="title">Limites personnelles</h3>
+          <p class="desc">Je fixe un budget/temps max, je n’essaie pas de “me refaire”, et j’arrête dès que ça dérape émotionnellement.</p>
+          <div class="row"><a class="btn" href="#apropos">Pourquoi ici</a></div>
+        </article>
+      </div>
+
+      <div class="panel" style="margin-top:12px">
+        <div class="small" style="margin-bottom:6px">📌 Règle simple</div>
+        <div style="font-weight:1000;font-size:16px;margin-bottom:6px">
+          Si tu ne comprends pas comment une plateforme gagne de l’argent, prudence.
         </div>
-        <div class="trustbox">
-          <p class="t">⚡ Fast support</p>
-          <p class="d">Questions or issues? Join Discord for quick answers, updates, and help.</p>
-        </div>
-        <div class="trustbox">
-          <p class="t">✅ Transparency</p>
-          <p class="d">“New users only”, limited-time notes, and quick access to terms.</p>
+        <div class="small">
+          Un bon réflexe : lire les conditions, chercher les limites, et ne jamais agir sous impulsion.
         </div>
       </div>
     </section>
 
-    <section id="how" class="section">
-      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">How it works</h2>
-      <details>
-        <summary>✅ Steps (simple)</summary>
-        <div class="small" style="margin-top:8px">
-          1) Sign up via the official link<br/>
-          2) Get <b>€10 FREE</b><br/>
-          3) Deposit to unlock <b>x2</b> + <b>75 free spins</b><br/>
-          4) Play 🎰
-        </div>
-      </details>
-      <details>
-        <summary>💡 Real example</summary>
-        <div class="small" style="margin-top:8px">
-          You deposit <b>€10</b> → you start with <b>€20 + 75 free spins</b>.
-        </div>
-      </details>
-      <details>
-        <summary>📌 Notes</summary>
-        <div class="small" style="margin-top:8px">
-          This offer is typically for <b>new users</b>. Always check the operator’s terms on the signup page.
-        </div>
-      </details>
+    <!-- A EVITER -->
+    <section id="eviter" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Ce qu’il faut éviter</h2>
+
+      <div class="grid">
+        <article class="card">
+          <div class="tag">⚠️ <b>Erreur</b></div>
+          <h3 class="title">Décider sous émotion</h3>
+          <p class="desc">Colère, excitation, frustration : c’est le pire moment pour “prendre une décision”. Pause.</p>
+          <div class="row"><a class="btn" href="#analyses">Revoir la checklist</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">⚠️ <b>Erreur</b></div>
+          <h3 class="title">Ignorer les conditions</h3>
+          <p class="desc">Les conditions déterminent la réalité : éligibilité, limites, délais, exceptions.</p>
+          <div class="row"><a class="btn" href="#ressources">Voir Ressources</a></div>
+        </article>
+
+        <article class="card">
+          <div class="tag">⚠️ <b>Erreur</b></div>
+          <h3 class="title">Chercher “l’argent facile”</h3>
+          <p class="desc">Quand c’est présenté comme simple et garanti, c’est souvent là que ça piège le plus.</p>
+          <div class="row"><a class="btn" href="#explication">Comprendre le mécanisme</a></div>
+        </article>
+      </div>
+
+      <div class="small" style="margin-top:6px;color:rgba(239,68,68,.9)">
+        ⚠️ Rappel : contenu informatif, pas un conseil financier. 18+ uniquement.
+      </div>
     </section>
 
-    <section id="reviews" class="section">
-      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Player reviews</h2>
-      <p class="small" style="margin:0;max-width:900px">
-        Feedback from players. We keep it smooth, transparent, and community-focused.
+    <!-- RESSOURCES -->
+    <section id="ressources" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">Ressources</h2>
+      <p class="small" style="margin:0;max-width:920px">
+        Liens externes (certains réservés à un public majeur). Clique seulement si c’est pertinent pour toi.
       </p>
 
-      <div class="test-grid">
-        <div class="quote">
-          <div class="topr">
-            <div class="name">Alex M.</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          </div>
-          <p>“Great casino experience! I managed to win a good amount of money, and everything feels very reliable.”</p>
-          <div class="pill">Trusted review</div>
-        </div>
+      <div id="resourcesGrid" class="grid"></div>
+    </section>
 
-        <div class="quote">
-          <div class="topr">
-            <div class="name">Daniel R.</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          </div>
-          <p>“Awesome casino. I had some really good wins, and the platform feels safe and trustworthy.”</p>
-          <div class="pill">Trusted review</div>
-        </div>
+    <!-- A PROPOS -->
+    <section id="apropos" class="section">
+      <h2 style="margin:0 0 10px;font-size:20px;font-weight:1000">À propos</h2>
+      <p class="small" style="margin:0;max-width:920px">
+        LinaStreamy : formats courts + contenus structurés. Objectif : comprendre, analyser, éviter les décisions impulsives.
+      </p>
 
-        <div class="quote">
-          <div class="topr">
-            <div class="name">Chris L.</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          </div>
-          <p>“Excellent casino overall! I made decent profits and the system looks very reliable.”</p>
-          <div class="pill">Trusted review</div>
+      <div class="panel" style="margin-top:12px">
+        <div style="font-weight:1000;font-size:16px;margin-bottom:6px">Me retrouver</div>
+        <div class="small">
+          📱 TikTok : formats courts<br/>
+          🔗 Site : offre + analyses + ressources
+        </div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn discord" id="btnTikTok2" href="#" target="_blank" rel="nofollow noopener">Ouvrir TikTok</a>
+          <button class="btn" id="copyTikTok">Copier le lien TikTok</button>
         </div>
       </div>
 
       <div class="footer">
-        <div><b>18+</b> — Gambling involves risk: debt, isolation, addiction. Set limits and play responsibly.</div>
-        <div style="margin-top:8px">© <span id="year"></span> AokCasino — All rights reserved.</div>
+        <div><b>Responsabilité</b> — Fixe des limites (temps/budget), protège-toi, et n’agis jamais sous impulsion.</div>
+        <div style="margin-top:8px">© <span id="year"></span> LinaStreamy — Tous droits réservés.</div>
       </div>
     </section>
   </main>
@@ -330,22 +389,47 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ======= AOKCASINO CONFIG (from your current page) =======
-    const DISCORD_URL = "https://discord.gg/UgPkKA6dJK";
+    // ======= CONFIG =======
+    const BRAND_NAME = "LinaStreamy";
+
+    const TIKTOK_URL = "https://www.tiktok.com/@linastreamy";
+
+    // Ton lien d'offre (externe)
     const OFFER_URL   = "https://dashboard.onetwoaffiliates.com/s/duJJN";
 
-    // If you have a promo code, put it here (otherwise keep it empty)
-    const OFFER_CODE  = ""; // e.g. "AOK10"
+    // Communauté (optionnel)
+    const COMMUNITY_URL = "https://discord.gg/UgPkKA6dJK";
 
-    // Offer cards (add more if you want)
+    // Si tu as un code promo
+    const OFFER_CODE  = ""; // ex: "LINA10"
+
+    // Cartes OFFRE (accueil)
     const OFFERS = [
       {
-        brand: "AokCasino",
-        headline: "€10 FREE + x2 deposit + 75 free spins",
-        desc: "Welcome pack: €10 FREE + doubled deposit + 75 free spins. Limited-time offer (new users only).",
+        brand: BRAND_NAME,
+        headline: "Offre promotionnelle (18+)",
+        desc: "Accès externe. Lis les conditions, vérifie l’éligibilité, et fixe tes limites avant de continuer.",
         code: OFFER_CODE,
-        ctaLabel: "Claim the Bonus",
+        ctaLabel: "Ouvrir l’offre",
         url: OFFER_URL
+      }
+    ];
+
+    // Cartes RESSOURCES
+    const RESOURCES = [
+      {
+        label: "Ressource",
+        title: "Accès complémentaire (18+)",
+        desc: "Lien externe réservé à un public majeur. Vérifie les conditions et reste responsable.",
+        url: OFFER_URL,
+        ctaLabel: "Ouvrir"
+      },
+      {
+        label: "Communauté",
+        title: "Support & échanges",
+        desc: "Un espace pour discuter, poser des questions, et suivre les mises à jour.",
+        url: COMMUNITY_URL,
+        ctaLabel: "Rejoindre"
       }
     ];
 
@@ -360,7 +444,7 @@
       window.__toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
     };
 
-    // UTM passthrough (keeps your UTM params on outgoing links)
+    // UTM passthrough
     const currentParams = new URLSearchParams(location.search);
     const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
     const utm = new URLSearchParams();
@@ -378,22 +462,22 @@
 
     const copy = async (text) => {
       await navigator.clipboard.writeText(text);
-      toast("Copied ✅");
+      toast("Copié ✅");
     };
 
-    // ======= Render offers =======
-    const grid = $("offersGrid");
-    grid.innerHTML = OFFERS.map((o) => {
+    // ======= Render OFFERS =======
+    const offersGrid = $("offersGrid");
+    offersGrid.innerHTML = OFFERS.map((o) => {
       const codeBlock = o.code
         ? `<div class="code">
              <span>${o.code}</span>
-             <button class="btn" data-copy="${o.code}">Copy code</button>
+             <button class="btn" data-copy="${o.code}">Copier le code</button>
            </div>`
-        : `<div class="small">Promo code: <b>none</b></div>`;
+        : `<div class="small">Code promo : <b>aucun</b></div>`;
 
       return `
         <article class="card">
-          <div class="tag">🎰 <b>${o.brand}</b></div>
+          <div class="tag">🔥 <b>${o.brand}</b></div>
           <h3 class="title">${o.headline}</h3>
           <p class="desc">${o.desc}</p>
           ${codeBlock}
@@ -401,10 +485,31 @@
             <a class="btn primary" href="${withUtm(o.url)}" target="_blank" rel="nofollow noopener">
               ${o.ctaLabel}
             </a>
-            <button class="btn" data-share="${withUtm(o.url)}">Copy link</button>
+            <button class="btn" data-share="${withUtm(o.url)}">Copier le lien</button>
           </div>
           <div class="small" style="margin-top:6px;color:rgba(239,68,68,.9)">
-            ⚠️ New users only · ⏳ Limited-time availability
+            ⚠️ 18+ · Externe · Lis les conditions · Reste responsable
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    // ======= Render RESOURCES =======
+    const resourcesGrid = $("resourcesGrid");
+    resourcesGrid.innerHTML = RESOURCES.map((r) => {
+      return `
+        <article class="card">
+          <div class="tag">🔗 <b>${r.label}</b></div>
+          <h3 class="title">${r.title}</h3>
+          <p class="desc">${r.desc}</p>
+          <div class="row">
+            <a class="btn primary" href="${withUtm(r.url)}" target="_blank" rel="nofollow noopener">
+              ${r.ctaLabel}
+            </a>
+            <button class="btn" data-share="${withUtm(r.url)}">Copier le lien</button>
+          </div>
+          <div class="small" style="margin-top:6px;color:rgba(239,68,68,.9)">
+            ⚠️ Externe · Lis les conditions · Reste responsable
           </div>
         </article>
       `;
@@ -419,16 +524,17 @@
       if (btnShare) return copy(btnShare.getAttribute("data-share"));
     });
 
-    // Top buttons
-    $("btnDiscord").href = withUtm(DISCORD_URL);
-    $("btnOfferTop").href = withUtm(OFFER_URL);
+    // TikTok buttons
+    $("btnTikTok").href = withUtm(TIKTOK_URL);
+    $("btnTikTok2").href = withUtm(TIKTOK_URL);
+    $("copyTikTok").addEventListener("click", async () => copy(TIKTOK_URL));
 
+    // Copy page link
     $("copyPageLink").addEventListener("click", async () => copy(location.href));
 
-    // Footer meta
+    // Dates
     $("year").textContent = new Date().getFullYear();
-    $("updatedAt").textContent = new Date().toLocaleDateString("en-US", { year:"numeric", month:"long", day:"numeric" });
+    $("updatedAt").textContent = new Date().toLocaleDateString("fr-FR", { year:"numeric", month:"long", day:"numeric" });
   </script>
 </body>
 </html>
-```
