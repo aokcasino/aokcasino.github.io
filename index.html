@@ -2,720 +2,406 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LinaStreamy — Bonus & Offres</title>
-  <meta name="description" content="LinaStreamy : sélection d’offres et bonus, infos utiles et liens rapides." />
-  <meta name="theme-color" content="#0b0f1a" />
-
-  <style>
-    :root{
-      --bg:#0b0f1a;
-      --card:#0f172a;
-      --card2:#101b33;
-      --muted:#9fb0d6;
-      --text:#eaf0ff;
-      --accent:#7c5cff;
-      --accent2:#22c55e;
-      --warn:#f59e0b;
-      --danger:#ef4444;
-      --border:rgba(255,255,255,.08);
-      --max:1160px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 650px at 20% 10%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(900px 500px at 90% 0%, rgba(34,197,94,.10), transparent 55%),
-        var(--bg);
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* Top promo bar */
-    .promo{
-      border-bottom:1px solid var(--border);
-      background:rgba(17,26,46,.65);
-      backdrop-filter:blur(10px);
-      padding:10px 18px;
-      font-size:13px;
-      color:var(--muted);
-    }
-    .promo-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-    .promo b{color:var(--text)}
-    .pilllink{
-      display:inline-flex;align-items:center;gap:8px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      padding:8px 10px;border-radius:999px;
-      font-weight:900;color:var(--text);
-    }
-    .pilllink:hover{background:rgba(255,255,255,.07)}
-
-    /* Header */
-    header{
-      position:sticky;top:0;z-index:20;
-      background:rgba(11,15,26,.82);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--border);
-    }
-    .head{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .brand{
-      display:flex;align-items:center;gap:10px;
-      font-weight:1000;letter-spacing:.2px;
-    }
-    .logo{
-      width:36px;height:36px;border-radius:12px;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--accent),#ff4fd8);
-      color:#0b0f1a;font-weight:1000;
-    }
-    .nav{
-      display:flex;gap:10px;align-items:center;flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    /* Dropdown like “LES BONUS” */
-    .dd{position:relative}
-    .dd button{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
-      cursor:pointer;
-      font-weight:900;
-      font-size:13px;
-      display:inline-flex;align-items:center;gap:8px;
-    }
-    .dd button:hover{background:rgba(255,255,255,.07)}
-    .menu{
-      position:absolute;right:0;top:46px;
-      min-width:260px;
-      border:1px solid var(--border);
-      background:rgba(15,23,42,.95);
-      border-radius:14px;
-      padding:8px;
-      display:none;
-      box-shadow:0 18px 60px rgba(0,0,0,.35);
-    }
-    .menu a{
-      display:flex;justify-content:space-between;gap:10px;
-      padding:10px 10px;border-radius:10px;
-      color:var(--text);
-      font-weight:900;
-      font-size:13px;
-    }
-    .menu a span{color:var(--muted);font-weight:800}
-    .menu a:hover{background:rgba(255,255,255,.06)}
-    .dd.open .menu{display:block}
-
-    /* Buttons */
-    .btn{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
-      cursor:pointer;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-weight:900;
-      font-size:13px;
-      transition:transform .12s ease, background .12s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{background:rgba(255,255,255,.07);transform:translateY(-1px)}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#ff4fd8);border:0}
-    .btn.tiktok{background:linear-gradient(135deg,#00f2ea,#ff0050);border:0;color:#0b0f1a}
-
-    /* Layout */
-    .wrap{max-width:var(--max);margin:0 auto;padding:18px 18px 70px}
-    .hero{
-      padding:18px 0 10px;
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:16px;
-      align-items:stretch;
-    }
-    .h1{margin:0 0 10px;font-size:40px;line-height:1.05;font-weight:1000}
-    .sub{margin:0;color:var(--muted);line-height:1.5}
-    .hero-card{
-      border:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius:18px;
-      padding:16px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .kpis{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:10px;
-      margin-top:12px;
-    }
-    .kpi{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      border-radius:14px;
-      padding:10px;
-    }
-    .kpi .t{margin:0;font-weight:1000}
-    .kpi .d{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.35}
-
-    /* Sections */
-    .section{margin:22px 0;scroll-margin-top:92px}
-    .section h2{margin:0 0 10px;font-size:18px;font-weight:1000}
-    .small{color:var(--muted);font-size:12px;line-height:1.45}
-
-    /* Offer grid like bonus sites */
-    .grid{display:grid;grid-template-columns:repeat(4, minmax(0,1fr));gap:12px;margin-top:12px}
-    .card{
-      border:1px solid var(--border);
-      background:linear-gradient(135deg, rgba(17,24,39,.70), rgba(15,23,42,.70));
-      border-radius:18px;
-      padding:12px;
-      box-shadow:0 12px 40px rgba(0,0,0,.25);
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height:280px;
-    }
-    .topline{display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .logoBox{
-      width:44px;height:44px;border-radius:14px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      display:grid;place-items:center;
-      font-weight:1000;
-      overflow:hidden;
-    }
-    .logoBox img{width:100%;height:100%;object-fit:cover}
-    .badgeRow{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-    .b{
-      font-size:11px;font-weight:1000;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      color:var(--muted);
-      padding:6px 8px;border-radius:999px;
-      white-space:nowrap;
-    }
-    .b.green{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.10);color:#bbf7d0}
-    .b.orange{border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.10);color:#fde68a}
-    .b.pink{border-color:rgba(236,72,153,.35);background:rgba(236,72,153,.10);color:#fecdd3}
-
-    .title{margin:0;font-size:15px;font-weight:1000}
-    .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .meta .box{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      border-radius:14px;
-      padding:10px;
-      min-height:58px;
-    }
-    .meta .box .v{margin:0;font-weight:1000}
-    .meta .box .l{margin:4px 0 0;color:var(--muted);font-size:11px}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
-    .btn.small{padding:9px 10px;border-radius:12px;font-size:12px}
-    .btn.ghost{background:rgba(255,255,255,.03)}
-    .btn.ghost:hover{background:rgba(255,255,255,.06)}
-    .note{margin:0;color:var(--muted);font-size:11px;line-height:1.35}
-
-    /* Modal */
-    .overlay{
-      position:fixed;inset:0;
-      background:rgba(0,0,0,.55);
-      display:none;
-      z-index:60;
-      padding:18px;
-    }
-    .overlay.show{display:grid;place-items:center}
-    .modal{
-      width:min(860px, 100%);
-      border:1px solid var(--border);
-      background:rgba(15,23,42,.96);
-      border-radius:18px;
-      box-shadow:0 22px 80px rgba(0,0,0,.45);
-      overflow:hidden;
-    }
-    .modal-head{
-      padding:12px 14px;
-      display:flex;align-items:center;justify-content:space-between;gap:10px;
-      border-bottom:1px solid var(--border);
-    }
-    .modal-head b{font-weight:1000}
-    .close{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      border-radius:12px;
-      padding:8px 10px;
-      cursor:pointer;
-      font-weight:1000;
-    }
-    .close:hover{background:rgba(255,255,255,.07)}
-    .modal-body{padding:14px}
-    .modal-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
-    .panel{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      border-radius:16px;
-      padding:12px;
-    }
-    .panel h3{margin:0 0 8px;font-size:14px}
-    .list{margin:0;padding-left:18px;color:#e5e7eb}
-    .list li{margin:6px 0;font-size:13px;line-height:1.4}
-    .muted{color:var(--muted)}
-
-    /* Toast */
-    .toast{
-      position:fixed;right:16px;bottom:16px;
-      background:rgba(17,26,46,.95);
-      border:1px solid var(--border);
-      padding:10px 12px;border-radius:14px;
-      display:none;max-width:320px;
-      box-shadow:0 12px 40px rgba(0,0,0,.25);
-      z-index:100;
-    }
-    .toast.show{display:block}
-
-    footer{
-      border-top:1px solid var(--border);
-      margin-top:22px;
-      padding-top:16px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.5;
-    }
-
-    @media (max-width:1050px){
-      .grid{grid-template-columns:repeat(3,1fr)}
-      .hero{grid-template-columns:1fr}
-      .kpis{grid-template-columns:1fr}
-      .modal-grid{grid-template-columns:1fr}
-    }
-    @media (max-width:720px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:520px){
-      .grid{grid-template-columns:1fr}
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil – Mon site</title>
+  <meta name="description" content="Découvrez nos gammes de produits, nouveautés et informations." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <!-- Top utility bar (lang + liens secondaires) -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__links">
+        <a href="#apropos">À propos</a>
+        <a href="#carriere">Carrière</a>
+        <a href="#locations">Locations</a>
+      </div>
 
-  <div class="promo">
-    <div class="promo-inner">
-      <div>⚡ <b>LinaStreamy</b> — Offres & infos, accès rapide</div>
-      <a class="pilllink" href="#offres">Voir les meilleures offres →</a>
+      <div class="topbar__right">
+        <button class="lang" type="button" aria-haspopup="listbox" aria-expanded="false" id="langBtn">
+          <span class="lang__label">fr</span>
+          <span class="lang__chev">▾</span>
+        </button>
+        <div class="langmenu" role="listbox" aria-label="Langues" id="langMenu" hidden>
+          <button type="button" role="option" data-lang="fr">Français</button>
+          <button type="button" role="option" data-lang="en">English</button>
+          <button type="button" role="option" data-lang="de">Deutsch</button>
+          <button type="button" role="option" data-lang="es">Español</button>
+        </div>
+
+        <button class="iconbtn" type="button" id="searchBtn" aria-label="Rechercher">
+          🔎
+        </button>
+      </div>
     </div>
   </div>
 
-  <header>
-    <div class="head">
-      <a class="brand" href="#home" aria-label="Accueil">
-        <span class="logo">L</span>
-        <span>LinaStreamy</span>
+  <!-- Header -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="Accueil">
+        <div class="brand__mark">■</div>
+        <div class="brand__text">
+          <div class="brand__name">Ma Marque</div>
+          <div class="brand__tag">Outillage & consommables</div>
+        </div>
       </a>
 
-      <nav class="nav" aria-label="Navigation">
-        <div class="dd" id="ddBonus">
-          <button type="button" aria-haspopup="true" aria-expanded="false">
-            LES OFFRES ▾
-          </button>
-          <div class="menu" role="menu" aria-label="Catégories">
-            <a href="#offres" role="menuitem">Top offres <span>→</span></a>
-            <a href="#sanswager" role="menuitem">Sans wager <span>→</span></a>
-            <a href="#nonsticky" role="menuitem">Non-sticky <span>→</span></a>
-            <a href="#freespins" role="menuitem">Free spins <span>→</span></a>
-          </div>
-        </div>
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav__burger" type="button" id="burger" aria-expanded="false" aria-controls="navPanel">
+          <span></span><span></span><span></span>
+          <span class="sr-only">Ouvrir le menu</span>
+        </button>
 
-        <a class="btn" href="#infos">Infos & astuces</a>
-        <a class="btn" href="#tableau">Tableau</a>
-        <a class="btn" href="#contact">Contact</a>
-        <a class="btn tiktok" id="btnTikTok" href="#" target="_blank" rel="nofollow noopener">TikTok</a>
+        <div class="nav__panel" id="navPanel">
+          <a href="#produits">Produits</a>
+
+          <div class="dropdown">
+            <button class="dropdown__btn" type="button" aria-expanded="false">
+              Nos gammes <span class="chev">▾</span>
+            </button>
+            <div class="dropdown__menu" role="menu">
+              <a role="menuitem" href="#gammes">Brosses & Pinceaux</a>
+              <a role="menuitem" href="#gammes">Manchons & Rouleaux</a>
+              <a role="menuitem" href="#gammes">Adhésifs</a>
+              <a role="menuitem" href="#gammes">Masquages & Sacs</a>
+              <a role="menuitem" href="#gammes">Outillage peintre & tapissier</a>
+              <a role="menuitem" href="#gammes">Protections individuelles</a>
+              <a role="menuitem" href="#gammes">Abrasifs</a>
+              <a role="menuitem" href="#gammes">Aérosols</a>
+              <a role="menuitem" href="#gammes">Nettoyage</a>
+              <a role="menuitem" href="#gammes">Assortiments</a>
+            </div>
+          </div>
+
+          <a href="#nouveautes">Nouveautés</a>
+          <a href="#contact">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section id="home" class="hero">
-      <div>
-        <h1 class="h1">Les meilleures offres du moment.</h1>
-        <p class="sub">
-          Sélection d’offres + accès rapide aux infos. Clique “Infos bonus” pour voir les détails (conditions, points importants, etc.).
-        </p>
+  <!-- Search drawer -->
+  <div class="search" id="search" hidden>
+    <div class="container search__inner">
+      <input id="searchInput" type="search" placeholder="Rechercher un produit, une gamme..." />
+      <button class="btn" type="button" id="searchClose">Fermer</button>
+      <div class="search__hint">Astuce : tape “rouleau”, “adhésif”, “abrasif”…</div>
+    </div>
+  </div>
 
-        <div class="kpis">
-          <div class="kpi">
-            <p class="t">⚡ Mise à jour</p>
-            <p class="d">Dernière mise à jour : <span id="updatedAt"></span></p>
-          </div>
-          <div class="kpi">
-            <p class="t">🧾 Détails</p>
-            <p class="d">Bouton “Infos bonus” sur chaque carte.</p>
-          </div>
-          <div class="kpi">
-            <p class="t">🔗 Liens</p>
-            <p class="d">UTM conservés automatiquement.</p>
-          </div>
-        </div>
-      </div>
+  <!-- Hero slider -->
+  <main>
+    <section class="hero" aria-label="Bannière d’accueil">
+      <div class="hero__slides" id="heroSlides">
+        <article class="hero__slide is-active" data-slide>
+          <div class="container hero__inner">
+            <div class="hero__content">
+              <p class="kicker">Bienvenue</p>
+              <h1>Découvrez nos différentes gammes de produits</h1>
+              <p class="lead">
+                Une page d’accueil type “catalogue industriel” : gammes, nouveautés, accès rapide.
+              </p>
+              <div class="hero__cta">
+                <a class="btn btn--primary" href="#gammes">Voir les gammes</a>
+                <a class="btn btn--ghost" href="#nouveautes">Nouveautés</a>
+              </div>
+            </div>
 
-      <!-- (Le bloc “Astuce / Copie le lien…” est retiré comme demandé) -->
-      <div class="hero-card">
-        <div>
-          <div class="small" style="margin-bottom:6px">📌 Accès rapide</div>
-          <div style="font-weight:1000;font-size:18px;margin-bottom:6px">Top offres</div>
-          <div class="small">Va directement au tableau des offres et récupère celle qui t’intéresse.</div>
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="#offres">Voir les offres</a>
-          <button class="btn" id="copyPageLink">Copier le lien du site</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="offres" class="section">
-      <h2>LES MEILLEURES OFFRES</h2>
-      <p class="small">Clique sur “Récupérer” pour ouvrir le lien, ou “Infos bonus” pour lire les détails.</p>
-      <div id="offersGrid" class="grid"></div>
-    </section>
-
-    <section id="infos" class="section">
-      <h2>INFOS & ASTUCES</h2>
-      <div class="hero-card">
-        <div class="small">
-          • Toujours lire les conditions avant de valider une offre<br/>
-          • Vérifier les limites (dépôt/retrait/bonus) et les contraintes éventuelles<br/>
-          • Prendre le temps : une bonne décision vaut mieux qu’un clic impulsif
-        </div>
-      </div>
-    </section>
-
-    <section id="tableau" class="section">
-      <h2>TABLEAU (résumé)</h2>
-      <p class="small">Même contenu que “Top offres”, présenté en cartes pour un accès rapide.</p>
-      <div id="tableGrid" class="grid"></div>
-    </section>
-
-    <section id="sanswager" class="section">
-      <h2>SANS WAGER</h2>
-      <div id="gridSansWager" class="grid"></div>
-    </section>
-
-    <section id="nonsticky" class="section">
-      <h2>NON STICKY</h2>
-      <div id="gridNonSticky" class="grid"></div>
-    </section>
-
-    <section id="freespins" class="section">
-      <h2>FREE SPINS</h2>
-      <div id="gridFreeSpins" class="grid"></div>
-    </section>
-
-    <section id="contact" class="section">
-      <h2>CONTACT</h2>
-      <div class="hero-card">
-        <div class="small">
-          Pour une demande ou une suggestion : passe via TikTok (message) ou ajoute un lien de contact ici plus tard.
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn tiktok" id="btnTikTok2" href="#" target="_blank" rel="nofollow noopener">Ouvrir TikTok</a>
-          <button class="btn" id="copyTikTok">Copier le lien TikTok</button>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div><b>LinaStreamy</b> — sélection d’offres + infos. Les contenus sont fournis à titre informatif.</div>
-      <div style="margin-top:8px">© <span id="year"></span> LinaStreamy</div>
-    </footer>
-  </main>
-
-  <!-- MODAL INFOS BONUS -->
-  <div class="overlay" id="overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal-head">
-        <b id="modalTitle">Infos bonus</b>
-        <button class="close" id="closeModal" type="button">Fermer</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-grid">
-          <div class="panel">
-            <h3>Détails</h3>
-            <div class="small muted" id="modalDesc"></div>
-            <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn primary" id="modalCta" href="#" target="_blank" rel="nofollow noopener">Récupérer le bonus</a>
-              <button class="btn" id="modalCopy" type="button">Copier le lien</button>
+            <div class="hero__visual" aria-hidden="true">
+              <div class="visualbox">
+                <div class="visualbox__badge">Slide 01</div>
+                <div class="visualbox__title">Univers Produits</div>
+              </div>
             </div>
           </div>
-          <div class="panel">
-            <h3>Checklist rapide</h3>
-            <ul class="list">
-              <li>Lire les conditions de l’offre</li>
-              <li>Vérifier les limites (dépôt/retrait)</li>
-              <li>Regarder si l’offre est “Sans wager” / “Non-sticky”</li>
-              <li>Vérifier la durée de validité</li>
-              <li>Garder une approche raisonnable</li>
-            </ul>
+        </article>
+
+        <article class="hero__slide" data-slide>
+          <div class="container hero__inner">
+            <div class="hero__content">
+              <p class="kicker">Focus</p>
+              <h2>Qualité, disponibilité, efficacité sur chantier</h2>
+              <p class="lead">
+                Mets ici ton message “marque” (B2B, pros, distributeurs, etc.).
+              </p>
+              <div class="hero__cta">
+                <a class="btn btn--primary" href="#produits">Accéder au catalogue</a>
+                <a class="btn btn--ghost" href="#contact">Contacter un commercial</a>
+              </div>
+            </div>
+
+            <div class="hero__visual" aria-hidden="true">
+              <div class="visualbox">
+                <div class="visualbox__badge">Slide 02</div>
+                <div class="visualbox__title">Nouveautés & actus</div>
+              </div>
+            </div>
           </div>
+        </article>
+
+        <article class="hero__slide" data-slide>
+          <div class="container hero__inner">
+            <div class="hero__content">
+              <p class="kicker">Pro</p>
+              <h2>Des gammes claires, un accès rapide</h2>
+              <p class="lead">
+                Structure : catégories → pages gammes → fiches produit.
+              </p>
+              <div class="hero__cta">
+                <a class="btn btn--primary" href="#gammes">Explorer</a>
+                <a class="btn btn--ghost" href="#locations">Nos agences</a>
+              </div>
+            </div>
+
+            <div class="hero__visual" aria-hidden="true">
+              <div class="visualbox">
+                <div class="visualbox__badge">Slide 03</div>
+                <div class="visualbox__title">Réseau & support</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero__controls container">
+        <button class="iconbtn" type="button" id="prevSlide" aria-label="Slide précédent">◀</button>
+        <div class="dots" id="heroDots" aria-label="Choisir une slide"></div>
+        <button class="iconbtn" type="button" id="nextSlide" aria-label="Slide suivant">▶</button>
+      </div>
+    </section>
+
+    <!-- Gammes grid (accès rapide) -->
+    <section class="section" id="gammes">
+      <div class="container">
+        <div class="section__head">
+          <h2>Découvrez toutes nos différentes gammes</h2>
+          <p>Accès direct aux grandes familles (grille type “home catalogue”).</p>
         </div>
 
-        <div class="panel" style="margin-top:12px">
-          <h3>Badges</h3>
-          <div class="small muted" id="modalBadges"></div>
+        <div class="grid">
+          <a class="card" href="#produits">
+            <div class="card__icon">🖌️</div>
+            <div class="card__title">Brosses & Pinceaux</div>
+            <div class="card__text">Pour finitions, laques, lasures, etc.</div>
+          </a>
+
+          <a class="card" href="#produits">
+            <div class="card__icon">🧻</div>
+            <div class="card__title">Manchons & Rouleaux</div>
+            <div class="card__text">Murs, plafonds, laques, supports.</div>
+          </a>
+
+          <a class="card" href="#produits">
+            <div class="card__icon">🟧</div>
+            <div class="card__title">Adhésifs</div>
+            <div class="card__text">Masquage, façade, multi-surfaces.</div>
+          </a>
+
+          <a class="card" href="#produits">
+            <div class="card__icon">🧤</div>
+            <div class="card__title">Protections individuelles</div>
+            <div class="card__text">Gants, protections, consommables.</div>
+          </a>
+
+          <a class="card" href="#produits">
+            <div class="card__icon">🧰</div>
+            <div class="card__title">Outillage</div>
+            <div class="card__text">Spatules, couteaux, accessoires.</div>
+          </a>
+
+          <a class="card" href="#produits">
+            <div class="card__icon">🧽</div>
+            <div class="card__title">Abrasifs</div>
+            <div class="card__text">Ponçage, finitions, préparation.</div>
+          </a>
+
+          <a class="card" href="#produits">
+            <div class="card__icon">🎨</div>
+            <div class="card__title">Aérosols</div>
+            <div class="card__text">Marquage, retouche, usage pro.</div>
+          </a>
+
+          <a class="card" href="#produits">
+            <div class="card__icon">🧼</div>
+            <div class="card__title">Nettoyage</div>
+            <div class="card__text">Chantier, outils, surfaces.</div>
+          </a>
         </div>
+      </div>
+    </section>
+
+    <!-- Nouveautés -->
+    <section class="section section--alt" id="nouveautes">
+      <div class="container">
+        <div class="section__head">
+          <h2>Nouveautés</h2>
+          <p>Mets 2 à 4 produits/actus en avant, avec lien “Vers le produit”.</p>
+        </div>
+
+        <div class="featuregrid">
+          <article class="feature">
+            <div class="feature__media" aria-hidden="true">
+              <div class="mediaPlaceholder">Image produit</div>
+            </div>
+            <div class="feature__body">
+              <h3>Produit Vedette A</h3>
+              <p>Petit descriptif : matière, usage, bénéfices.</p>
+              <a class="link" href="#produits">Vers le produit →</a>
+            </div>
+          </article>
+
+          <article class="feature">
+            <div class="feature__media" aria-hidden="true">
+              <div class="mediaPlaceholder">Image produit</div>
+            </div>
+            <div class="feature__body">
+              <h3>Produit Vedette B</h3>
+              <p>Petit descriptif : pour pros, finitions, rendement, etc.</p>
+              <a class="link" href="#produits">Vers le produit →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="banner">
+          <div class="banner__badge">NOUVEAUTÉ !!</div>
+          <div class="banner__text">
+            <strong>Annonce / actu</strong> — Exemple : “Nouveau ruban façade 72 mm” (remplace par ton info).
+          </div>
+          <a class="btn btn--ghost" href="#contact">Nous contacter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Produits (placeholder) -->
+    <section class="section" id="produits">
+      <div class="container">
+        <div class="section__head">
+          <h2>Catalogue</h2>
+          <p>Sur GitHub Pages, tu peux faire une page par gamme + fiches produit.</p>
+        </div>
+
+        <div class="tablelike">
+          <div class="tablelike__row">
+            <div class="tablelike__col"><strong>Gamme</strong></div>
+            <div class="tablelike__col"><strong>Exemples</strong></div>
+            <div class="tablelike__col"><strong>Lien</strong></div>
+          </div>
+          <div class="tablelike__row">
+            <div class="tablelike__col">Adhésifs</div>
+            <div class="tablelike__col">Masquage, multi-supports</div>
+            <div class="tablelike__col"><a class="link" href="#gammes">Ouvrir →</a></div>
+          </div>
+          <div class="tablelike__row">
+            <div class="tablelike__col">Rouleaux</div>
+            <div class="tablelike__col">Murs, laques, finitions</div>
+            <div class="tablelike__col"><a class="link" href="#gammes">Ouvrir →</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+        <div class="section__head">
+          <h2>Contact</h2>
+          <p>Formulaire simple (front) + mailto, ou intégration d’un service.</p>
+        </div>
+
+        <div class="contact">
+          <form class="form" id="contactForm">
+            <label>
+              Nom
+              <input required name="name" type="text" placeholder="Votre nom" />
+            </label>
+            <label>
+              Email
+              <input required name="email" type="email" placeholder="nom@domaine.com" />
+            </label>
+            <label>
+              Message
+              <textarea required name="message" rows="5" placeholder="Votre demande..."></textarea>
+            </label>
+            <button class="btn btn--primary" type="submit">Envoyer</button>
+            <p class="form__note" id="formNote" aria-live="polite"></p>
+          </form>
+
+          <aside class="contact__aside">
+            <div class="asidecard">
+              <h3>Adresse</h3>
+              <p>
+                Ma Société<br />
+                4 rue Exemple<br />
+                67000 Strasbourg<br />
+              </p>
+              <p>
+                +33 3 88 00 00 00<br />
+                contact@monsite.fr
+              </p>
+            </div>
+            <div class="asidecard" id="locations">
+              <h3>Agences</h3>
+              <p>Liste rapide ou lien vers une page “Locations”.</p>
+              <a class="link" href="#top">Voir nos implantations →</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="apropos">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <div class="footer__brand">Ma Marque</div>
+        <p>Texte légal / présentation courte.</p>
+        <div class="footer__links">
+          <a href="#">Données confidentielles</a>
+          <a href="#">Impression</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__title">Langues</div>
+        <div class="footer__langs">
+          <button type="button" class="pill" data-lang="fr">FR</button>
+          <button type="button" class="pill" data-lang="en">EN</button>
+          <button type="button" class="pill" data-lang="de">DE</button>
+          <button type="button" class="pill" data-lang="es">ES</button>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__title">Contact</div>
+        <p>
+          contact@monsite.fr<br />
+          +33 3 88 00 00 00
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <small>© <span id="year"></span> Ma Société — Tous droits réservés.</small>
+      <a class="toTop" href="#top">↑ Haut de page</a>
+    </div>
+  </footer>
+
+  <!-- Cookie banner -->
+  <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookies" hidden>
+    <div class="cookie__inner">
+      <div class="cookie__text">
+        Ce site utilise des cookies (mesure d’audience & amélioration de l’expérience).
+      </div>
+      <div class="cookie__actions">
+        <button class="btn btn--primary" type="button" id="cookieAccept">Accepter</button>
+        <button class="btn btn--ghost" type="button" id="cookieMore">Plus d’infos</button>
       </div>
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
-
-  <script>
-    // ======= CONFIG =======
-    const BRAND_NAME = "LinaStreamy";
-    const TIKTOK_URL = "https://www.tiktok.com/@linastreamy";
-
-    // Ton lien d'offre (tu peux en ajouter plusieurs ci-dessous)
-    const DEFAULT_OFFER_URL = "https://dashboard.onetwoaffiliates.com/s/duJJN";
-
-    // ======= OFFRES (style bonus site) =======
-    // Tu peux remplacer logoText par logoUrl si tu as des images (png/webp).
-    const OFFERS = [
-      {
-        id: "offer-1",
-        name: "Offre LinaStreamy",
-        logoText: "LS",
-        logoUrl: "", // optionnel: "images/tonlogo.png"
-        primary: { value: "+100%", label: "Jusqu’à 500€" },
-        secondary: { value: "+200", label: "Free spins" },
-        badges: ["TOP", "RAPIDE", "INFOS"],
-        tags: ["nonsticky", "freespins"],
-        desc: "Offre sélectionnée par LinaStreamy. Pense à lire les conditions (validité, limites, etc.).",
-        url: DEFAULT_OFFER_URL
-      },
-      {
-        id: "offer-2",
-        name: "Bonus Sans Wager",
-        logoText: "SW",
-        logoUrl: "",
-        primary: { value: "+100%", label: "Jusqu’à 400€" },
-        secondary: { value: "SANS", label: "WAGER" },
-        badges: ["SANS WAGER"],
-        tags: ["sanswager"],
-        desc: "Catégorie Sans Wager : vérifie la définition exacte et les conditions associées.",
-        url: DEFAULT_OFFER_URL
-      },
-      {
-        id: "offer-3",
-        name: "Bonus Non-Sticky",
-        logoText: "NS",
-        logoUrl: "",
-        primary: { value: "+150%", label: "Jusqu’à 500€" },
-        secondary: { value: "NON", label: "STICKY" },
-        badges: ["NON STICKY"],
-        tags: ["nonsticky"],
-        desc: "Catégorie Non-Sticky : regarde comment le bonus est appliqué et retiré selon les règles.",
-        url: DEFAULT_OFFER_URL
-      },
-      {
-        id: "offer-4",
-        name: "Pack Free Spins",
-        logoText: "FS",
-        logoUrl: "",
-        primary: { value: "+100%", label: "Jusqu’à 350€" },
-        secondary: { value: "+500", label: "Free spins" },
-        badges: ["FREESPINS"],
-        tags: ["freespins"],
-        desc: "Pack Free spins : vérifie les jeux éligibles et la durée de validité.",
-        url: DEFAULT_OFFER_URL
-      }
-    ];
-
-    // ======= Helpers =======
-    const $ = (id) => document.getElementById(id);
-
-    const toast = (msg) => {
-      const t = $("toast");
-      t.textContent = msg;
-      t.classList.add("show");
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
-    };
-
-    // UTM passthrough
-    const currentParams = new URLSearchParams(location.search);
-    const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
-    const utm = new URLSearchParams();
-    utmKeys.forEach(k => { if (currentParams.get(k)) utm.set(k, currentParams.get(k)); });
-
-    const withUtm = (url) => {
-      try{
-        const u = new URL(url);
-        utm.forEach((v,k)=>u.searchParams.set(k,v));
-        return u.toString();
-      }catch(e){
-        return url;
-      }
-    };
-
-    const copy = async (text) => {
-      await navigator.clipboard.writeText(text);
-      toast("Copié ✅");
-    };
-
-    // Dropdown
-    const dd = $("ddBonus");
-    dd.querySelector("button").addEventListener("click", () => {
-      const open = dd.classList.toggle("open");
-      dd.querySelector("button").setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    document.addEventListener("click", (e) => {
-      if (!dd.contains(e.target)) {
-        dd.classList.remove("open");
-        dd.querySelector("button").setAttribute("aria-expanded", "false");
-      }
-    });
-
-    // Modal
-    const overlay = $("overlay");
-    const closeModal = () => {
-      overlay.classList.remove("show");
-      overlay.setAttribute("aria-hidden","true");
-    };
-    $("closeModal").addEventListener("click", closeModal);
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) closeModal();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-
-    const openModal = (offer) => {
-      $("modalTitle").textContent = `Infos bonus — ${offer.name}`;
-      $("modalDesc").textContent = offer.desc;
-      $("modalBadges").textContent = offer.badges.join(" • ");
-      $("modalCta").href = withUtm(offer.url);
-      $("modalCopy").onclick = () => copy(withUtm(offer.url));
-
-      overlay.classList.add("show");
-      overlay.setAttribute("aria-hidden","false");
-    };
-
-    // Card renderer
-    const badgeClass = (b) => {
-      const x = (b || "").toUpperCase();
-      if (x.includes("SANS")) return "b green";
-      if (x.includes("TOP")) return "b pink";
-      if (x.includes("FREE")) return "b orange";
-      return "b";
-    };
-
-    const renderCard = (o) => {
-      const logo = o.logoUrl
-        ? `<img alt="${o.name}" src="${o.logoUrl}">`
-        : `<span>${o.logoText || "★"}</span>`;
-
-      const badges = (o.badges || []).slice(0,3).map(b => `<span class="${badgeClass(b)}">${b}</span>`).join("");
-
-      return `
-        <article class="card">
-          <div class="topline">
-            <div class="logoBox">${logo}</div>
-            <div class="badgeRow">${badges}</div>
-          </div>
-
-          <h3 class="title">${o.name}</h3>
-
-          <div class="meta">
-            <div class="box">
-              <p class="v">${o.primary.value}</p>
-              <p class="l">${o.primary.label}</p>
-            </div>
-            <div class="box">
-              <p class="v">${o.secondary.value}</p>
-              <p class="l">${o.secondary.label}</p>
-            </div>
-          </div>
-
-          <p class="note">${o.desc}</p>
-
-          <div class="actions">
-            <a class="btn small primary" href="${withUtm(o.url)}" target="_blank" rel="nofollow noopener">Récupérer</a>
-            <button class="btn small ghost" type="button" data-info="${o.id}">Infos bonus</button>
-            <button class="btn small" type="button" data-share="${withUtm(o.url)}">Copier</button>
-          </div>
-        </article>
-      `;
-    };
-
-    // Render grids
-    const offersGrid = $("offersGrid");
-    const tableGrid = $("tableGrid");
-    const gridSansWager = $("gridSansWager");
-    const gridNonSticky = $("gridNonSticky");
-    const gridFreeSpins = $("gridFreeSpins");
-
-    const byTag = (tag) => OFFERS.filter(o => (o.tags || []).includes(tag));
-
-    offersGrid.innerHTML = OFFERS.map(renderCard).join("");
-    tableGrid.innerHTML = OFFERS.map(renderCard).join("");
-
-    gridSansWager.innerHTML = byTag("sanswager").map(renderCard).join("") || `<div class="small">Aucune offre pour le moment.</div>`;
-    gridNonSticky.innerHTML = byTag("nonsticky").map(renderCard).join("") || `<div class="small">Aucune offre pour le moment.</div>`;
-    gridFreeSpins.innerHTML = byTag("freespins").map(renderCard).join("") || `<div class="small">Aucune offre pour le moment.</div>`;
-
-    // Events
-    document.addEventListener("click", async (e) => {
-      const share = e.target.closest("[data-share]");
-      if (share) return copy(share.getAttribute("data-share"));
-
-      const info = e.target.closest("[data-info]");
-      if (info) {
-        const id = info.getAttribute("data-info");
-        const offer = OFFERS.find(x => x.id === id);
-        if (offer) openModal(offer);
-      }
-    });
-
-    // TikTok
-    $("btnTikTok").href = withUtm(TIKTOK_URL);
-    $("btnTikTok2").href = withUtm(TIKTOK_URL);
-    $("copyTikTok").addEventListener("click", async () => copy(TIKTOK_URL));
-
-    // Copy page link
-    $("copyPageLink").addEventListener("click", async () => copy(location.href));
-
-    // Dates
-    $("year").textContent = new Date().getFullYear();
-    $("updatedAt").textContent = new Date().toLocaleDateString("fr-FR", { year:"numeric", month:"long", day:"numeric" });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
